@@ -1,0 +1,404 @@
+/* --- 1. Global Styles and Custom Properties (Variables) --- */
+:root {
+    /* Updated Color Palette */
+    --primary-color: #00bcd4; /* A vibrant Cyan for main accents */
+    --secondary-color: #3f51b5; /* A deep Indigo for contrast/hover */
+    --background-light: #f4f6f9; /* Off-white for sections */
+    --background-dark: #2c3e50; /* Dark section background */
+    --text-color: #34495e; /* Slightly softer dark text */
+    --white: #ffffff;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+    /* Typography */
+    --font-family-body: 'Roboto', sans-serif;
+    --font-family-heading: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-light);
+    scroll-behavior: smooth; 
+}
+
+.container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-family-heading);
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* --- 2. Header and Navigation Polish --- */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: 900;
+    color: var(--text-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 35px;
+}
+
+nav ul li a {
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 5px 0;
+    position: relative;
+}
+
+/* Stylish underline effect for navigation */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after { /* Active state underline */
+    width: 100%;
+    left: 0;
+    background: var(--primary-color);
+}
+
+nav ul li a.active { /* Custom style for the active navigation link */
+    color: var(--primary-color) !important;
+    font-weight: 700;
+}
+
+
+/* --- 3. Call to Action Button (CTA) Enhancement --- */
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white) !important;
+    padding: 14px 30px;
+    border-radius: 50px; 
+    margin-top: 25px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: 2px solid var(--primary-color);
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 188, 212, 0.4);
+}
+
+
+/* --- 4. Hero Section Polish --- */
+.hero-section {
+    padding: 120px 0;
+    background: linear-gradient(135deg, var(--white) 0%, var(--background-light) 100%);
+    text-align: left;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.greeting {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.hero-content h2 {
+    font-size: 4.5em; 
+    margin-bottom: 0.1em;
+    line-height: 1.1;
+    color: var(--text-color);
+    font-weight: 900;
+}
+
+.hero-content h3 {
+    font-size: 2em;
+    color: var(--secondary-color);
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+/* --- 5. Projects Section and Card Design --- */
+.projects-section {
+    padding: 80px 0;
+    background-color: var(--background-light);
+    text-align: center;
+}
+
+.projects-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.projects-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    text-align: left;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.project-card img {
+    width: 100%;
+    height: 220px; 
+    object-fit: cover;
+    display: block;
+}
+
+.project-details {
+    padding: 25px;
+}
+
+.project-details h3 {
+    color: var(--secondary-color);
+    font-size: 1.5em;
+    margin-bottom: 8px;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+/* --- 6. About Section Contrast --- */
+.about-section {
+    background-color: var(--background-dark); 
+    color: var(--white);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.about-section h2 {
+    color: var(--primary-color);
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.skills-list {
+    margin-top: 30px;
+    display: inline-block;
+    text-align: left;
+}
+
+.skills-list h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.skills-list ul {
+    columns: 2;
+    column-gap: 60px;
+    list-style: none;
+    font-size: 1.1em;
+}
+
+.skills-list li {
+    margin-bottom: 12px;
+    padding-left: 1.2em;
+    position: relative;
+    color: var(--white);
+}
+
+.skills-list li::before {
+    content: "✓"; 
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+
+/* --- 7. Contact Section Form Styling --- */
+.contact-section {
+    padding: 80px 0;
+    background-color: var(--background-light);
+}
+
+#contact-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
+}
+
+.contact-section .cta-button {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.social-links {
+    margin-top: 35px;
+    font-size: 1.2em;
+}
+
+.social-links a {
+    margin: 0 15px;
+    color: var(--secondary-color);
+}
+
+/* --- 8. Footer --- */
+footer {
+    background-color: var(--background-dark);
+    color: #95a5a6;
+    text-align: center;
+    padding: 25px 0;
+    font-size: 0.9em;
+}
+
+
+/* --- 9. Media Queries (Responsiveness) --- */
+@media (max-width: 992px) {
+    .hero-content h2 {
+        font-size: 3.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-top: 15px;
+    }
+
+    nav ul li {
+        margin: 0 15px;
+    }
+
+    .hero-section {
+        padding: 80px 0;
+        text-align: center;
+    }
+
+    .hero-content h2 {
+        font-size: 2.8em;
+    }
+
+    .hero-content h3 {
+        font-size: 1.5em;
+    }
+
+    .skills-list ul {
+        columns: 1;
+    }
+}
